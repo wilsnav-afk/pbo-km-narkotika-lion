@@ -130,3 +130,51 @@
     -fx-padding: 0 8;
 }
 
+/* sentence severity badges */
+
+.badge-light {
+    -fx-text-fill: #78c88c;
+    -fx-font-weight: bold;
+}
+
+.badge-medium {
+    -fx-text-fill: #e5c07b;
+    -fx-font-weight: bold;
+}
+
+.badge-severe {
+    -fx-text-fill: #e06c75;
+    -fx-font-weight: bold;
+}
+
+/* status bar */
+
+#statusbar {
+    -fx-background-color: #20242b;
+    -fx-padding: 7 18;
+    -fx-border-color: #2e3440 transparent transparent transparent;
+}
+
+#statusbar .label {
+    -fx-text-fill: #8a93a5;
+    -fx-font-size: 11px;
+}
+
+/* dialogs pick this file up through styleDialog() in JavaFXView */
+
+.dialog-pane {
+    -fx-background-color: #1e2228;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #242c3d;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #e8eaf0;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #ccd2dc;
+}
