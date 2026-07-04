@@ -110,4 +110,47 @@ public class VerdictStatistics {
         }
         return lines;
     }
+
+    /**
+     * The full report as one text block. Used both by the console view
+     * and by the export-to-file feature, so both always agree.
+     */
+    public String buildReport() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("=================================================\n");
+        sb.append("  STATISTICS - NARCOTICS COURT VERDICTS\n");
+        sb.append("=================================================\n");
+        sb.append(String.format("Total verdicts       : %d%n", totalVerdicts));
+        sb.append(String.format("Average sentence     : %.1f months (~%.1f years)%n",
+                averageSentenceMonths, averageSentenceMonths / 12.0));
+        sb.append(String.format("Average fine         : Rp %,.0f%n", averageFine));
+        sb.append(String.format("Most common narcotic : %s%n", mostCommonNarcotic));
+        sb.append("Role distribution    :\n");
+        for (String line : roleDistribution) {
+            sb.append("  ").append(line).append("\n");
+        }
+        sb.append("=================================================\n");
+        return sb.toString();
+    }
+
+    public int getTotalVerdicts() {
+        return totalVerdicts;
+    }
+
+    public double getAverageSentenceMonths() {
+        return averageSentenceMonths;
+    }
+
+    public double getAverageFine() {
+        return averageFine;
+    }
+
+    public String getMostCommonNarcotic() {
+        return mostCommonNarcotic;
+    }
+
+    /** Clone keeps the internal array safe from outside edits. */
+    public String[] getRoleDistribution() {
+        return roleDistribution.clone();
+    }
 }
