@@ -93,4 +93,23 @@ public class Verdict extends LegalDocument implements Comparable<Verdict> {
         }
         return "Severe";
     }
+
+    /** Default ordering: shorter sentences first. */
+    @Override
+    public int compareTo(Verdict other) {
+        return Integer.compare(this.sentenceMonths, other.sentenceMonths);
+    }
+
+    @Override
+    public String summary() {
+        return getCaseNumber() + " - " + defendantName
+                + " (" + narcoticType + ", " + sentenceMonths + " months)";
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-26s %-24s %3d yo  %-16s %8.2f g  %4d mo  %s",
+                getCaseNumber(), defendantName, defendantAge,
+                narcoticType, evidenceWeight, sentenceMonths, defendantRole);
+    }
 }
