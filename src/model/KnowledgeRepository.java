@@ -56,4 +56,69 @@ public class KnowledgeRepository implements VerdictRepository {
         }
         return matches;
     }
+
+    @Override
+    public ArrayList<Verdict> filterByNarcoticType(String type) {
+        ArrayList<Verdict> matches = new ArrayList<>();
+        if (type == null || type.trim().isEmpty()) {
+            return matches;
+        }
+        String needle = type.trim().toLowerCase();
+        for (Verdict v : verdicts) {
+            if (v.getNarcoticType().toLowerCase().contains(needle)) {
+                matches.add(v);
+            }
+        }
+        return matches;
+    }
+
+    @Override
+    public ArrayList<Verdict> filterByCourt(String court) {
+        ArrayList<Verdict> matches = new ArrayList<>();
+        if (court == null || court.trim().isEmpty()) {
+            return matches;
+        }
+        String needle = court.trim().toLowerCase();
+        for (Verdict v : verdicts) {
+            if (v.getCourt().toLowerCase().contains(needle)) {
+                matches.add(v);
+            }
+        }
+        return matches;
+    }
+
+    @Override
+    public ArrayList<Verdict> filterBySentenceRange(int minMonths, int maxMonths) {
+        ArrayList<Verdict> matches = new ArrayList<>();
+        for (Verdict v : verdicts) {
+            int m = v.getSentenceMonths();
+            if (m >= minMonths && m <= maxMonths) {
+                matches.add(v);
+            }
+        }
+        return matches;
+    }
+
+    @Override
+    public boolean remove(String caseNumber) {
+        Verdict found = findByCaseNumber(caseNumber);
+        if (found == null) {
+            return false;
+        }
+        return verdicts.remove(found);
+    }
+
+    /**
+     * Returns a copy so callers can sort or trim the list freely
+     * without corrupting the repository's own ordering.
+     */
+    @Override
+    public ArrayList<Verdict> getAll() {
+        return new ArrayList<>(verdicts);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return verdicts.size();
+    }
 }
