@@ -1,0 +1,24 @@
+# JavaFX SDK - each member downloads it locally, see README
+lib/
+
+# compiled output
+out/
+*.class
+target/
+build/
+
+# generated at runtime
+statistics_report.txt
+
+# IDE clutter
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+nbproject/
+
+# OS noise
+Thumbs.db
+.DS_Store
