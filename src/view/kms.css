@@ -1,0 +1,180 @@
+/* Dark theme for the KMS window.
+   Built on top of Modena: overriding -fx-base and friends lets the
+   default skin derive most control states (hover, focus, disabled)
+   so this file stays small. */
+
+.root {
+    -fx-base: #23272e;
+    -fx-background: #1b1e24;
+    -fx-control-inner-background: #262b33;
+    -fx-control-inner-background-alt: #22262d;
+    -fx-accent: #4f8cff;
+    -fx-focus-color: #4f8cff;
+    -fx-faint-focus-color: #4f8cff22;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* header strip */
+
+#header {
+    -fx-background-color: linear-gradient(to right, #242c3d, #1b1e24);
+    -fx-padding: 14 18 12 18;
+    -fx-spacing: 2;
+}
+
+#title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e8eaf0;
+}
+
+#subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a93a5;
+}
+
+/* toolbar */
+
+#toolbar {
+    -fx-background-color: #20242b;
+    -fx-padding: 10 18;
+    -fx-border-color: transparent transparent #2e3440 transparent;
+}
+
+.button {
+    -fx-background-color: #2e3440;
+    -fx-text-fill: #d7dae0;
+    -fx-background-radius: 6;
+    -fx-background-insets: 0;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #3b4252;
+}
+
+.button.primary {
+    -fx-background-color: #3468c4;
+    -fx-text-fill: white;
+}
+
+.button.primary:hover {
+    -fx-background-color: #4f8cff;
+}
+
+.button.danger {
+    -fx-background-color: #703940;
+    -fx-text-fill: #f0d5d8;
+}
+
+.button.danger:hover {
+    -fx-background-color: #96444e;
+}
+
+.text-field {
+    -fx-background-color: #2a2f38;
+    -fx-text-fill: #d7dae0;
+    -fx-prompt-text-fill: #6b7382;
+    -fx-background-radius: 6;
+    -fx-background-insets: 0;
+    -fx-padding: 6 10;
+}
+
+/* table */
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #20242b;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #2e3440 #2e3440 transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #9aa3b5;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #1e2228;
+    -fx-cell-size: 30px;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #22262d;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #2a3038;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #33415e;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #ccd2dc;
+    -fx-border-color: transparent;
+    -fx-padding: 0 8;
+}
+
+/* sentence severity badges */
+
+.badge-light {
+    -fx-text-fill: #78c88c;
+    -fx-font-weight: bold;
+}
+
+.badge-medium {
+    -fx-text-fill: #e5c07b;
+    -fx-font-weight: bold;
+}
+
+.badge-severe {
+    -fx-text-fill: #e06c75;
+    -fx-font-weight: bold;
+}
+
+/* status bar */
+
+#statusbar {
+    -fx-background-color: #20242b;
+    -fx-padding: 7 18;
+    -fx-border-color: #2e3440 transparent transparent transparent;
+}
+
+#statusbar .label {
+    -fx-text-fill: #8a93a5;
+    -fx-font-size: 11px;
+}
+
+/* dialogs pick this file up through styleDialog() in JavaFXView */
+
+.dialog-pane {
+    -fx-background-color: #1e2228;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #242c3d;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #e8eaf0;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: #ccd2dc;
+}
