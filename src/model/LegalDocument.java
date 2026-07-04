@@ -24,6 +24,11 @@ public abstract class LegalDocument {
         setVerdictDate(verdictDate);
     }
 
+    /**
+     * One-line summary of the document. Each subclass decides which
+     * of its fields matter most.
+     */
+    public abstract String summary();
 
     public String getCaseNumber() {
         return caseNumber;
