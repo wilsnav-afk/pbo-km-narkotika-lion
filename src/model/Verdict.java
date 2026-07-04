@@ -51,4 +51,46 @@ public class Verdict extends LegalDocument implements Comparable<Verdict> {
     public static int getTotalCreated() {
         return totalCreated;
     }
+
+    /** Prints the one-line form — handy when listing many verdicts at once. */
+    public void display() {
+        System.out.println(this);
+    }
+
+    /**
+     * Overloaded version of display(). Pass true for the full detail
+     * block, false behaves exactly like the no-argument form.
+     */
+    public void display(boolean detailed) {
+        if (!detailed) {
+            display();
+            return;
+        }
+        System.out.println("Case number      : " + getCaseNumber());
+        System.out.println("Court            : " + getCourt());
+        System.out.println("Verdict date     : " + getVerdictDate());
+        System.out.println("Defendant        : " + defendantName + " (" + defendantAge + " years old)");
+        System.out.println("Role             : " + defendantRole);
+        System.out.println("Narcotic         : " + narcoticType);
+        System.out.println(String.format("Evidence weight  : %.2f g", evidenceWeight));
+        System.out.println("Violated article : " + violatedArticle);
+        System.out.println("Sentence         : " + sentenceMonths + " months (" + getSentenceCategory() + ")");
+        System.out.println(String.format("Fine             : Rp %,.0f", fineAmount));
+        System.out.println("Presiding judge  : " + judgeName);
+    }
+
+    /**
+     * Rough severity bucket used in reports. The cut-offs follow the
+     * pattern we saw in the dataset: possession-for-use cases stay under
+     * two years, mid-level possession runs up to six.
+     */
+    public String getSentenceCategory() {
+        if (sentenceMonths < 24) {
+            return "Light";
+        }
+        if (sentenceMonths <= 72) {
+            return "Medium";
+        }
+        return "Severe";
+    }
 }
