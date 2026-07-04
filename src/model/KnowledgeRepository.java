@@ -121,4 +121,25 @@ public class KnowledgeRepository implements VerdictRepository {
     public int getTotalCount() {
         return verdicts.size();
     }
+
+    /**
+     * Sorted copy by sentence length. Uses the natural ordering that
+     * Verdict defines through Comparable.
+     */
+    public ArrayList<Verdict> sortedBySentence(boolean ascending) {
+        ArrayList<Verdict> copy = getAll();
+        Collections.sort(copy);
+        if (!ascending) {
+            Collections.reverse(copy);
+        }
+        return copy;
+    }
+
+    /** Sorted copy by fine amount, done with a Comparator this time. */
+    public ArrayList<Verdict> sortedByFine(boolean ascending) {
+        ArrayList<Verdict> copy = getAll();
+        Comparator<Verdict> byFine = Comparator.comparingDouble(Verdict::getFineAmount);
+        copy.sort(ascending ? byFine : byFine.reversed());
+        return copy;
+    }
 }
