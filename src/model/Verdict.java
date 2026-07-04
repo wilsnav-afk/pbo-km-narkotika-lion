@@ -112,4 +112,106 @@ public class Verdict extends LegalDocument implements Comparable<Verdict> {
                 getCaseNumber(), defendantName, defendantAge,
                 narcoticType, evidenceWeight, sentenceMonths, defendantRole);
     }
+
+    // --- getters & setters, validation lives here on purpose ---
+
+    public String getDefendantName() {
+        return defendantName;
+    }
+
+    public void setDefendantName(String defendantName) {
+        if (defendantName == null || defendantName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Defendant name must not be empty");
+        }
+        this.defendantName = defendantName.trim();
+    }
+
+    public int getDefendantAge() {
+        return defendantAge;
+    }
+
+    public void setDefendantAge(int defendantAge) {
+        // criminal liability starts well above 0 and nobody is 150
+        if (defendantAge < 12 || defendantAge > 120) {
+            throw new IllegalArgumentException("Defendant age out of range: " + defendantAge);
+        }
+        this.defendantAge = defendantAge;
+    }
+
+    public String getNarcoticType() {
+        return narcoticType;
+    }
+
+    public void setNarcoticType(String narcoticType) {
+        if (narcoticType == null || narcoticType.trim().isEmpty()) {
+            throw new IllegalArgumentException("Narcotic type must not be empty");
+        }
+        this.narcoticType = narcoticType.trim();
+    }
+
+    public double getEvidenceWeight() {
+        return evidenceWeight;
+    }
+
+    public void setEvidenceWeight(double evidenceWeight) {
+        if (evidenceWeight <= 0) {
+            throw new IllegalArgumentException("Evidence weight must be greater than 0 grams");
+        }
+        this.evidenceWeight = evidenceWeight;
+    }
+
+    public String getViolatedArticle() {
+        return violatedArticle;
+    }
+
+    public void setViolatedArticle(String violatedArticle) {
+        if (violatedArticle == null || violatedArticle.trim().isEmpty()) {
+            throw new IllegalArgumentException("Violated article must not be empty");
+        }
+        this.violatedArticle = violatedArticle.trim();
+    }
+
+    public String getDefendantRole() {
+        return defendantRole;
+    }
+
+    public void setDefendantRole(String defendantRole) {
+        if (defendantRole == null || defendantRole.trim().isEmpty()) {
+            throw new IllegalArgumentException("Defendant role must not be empty");
+        }
+        this.defendantRole = defendantRole.trim();
+    }
+
+    public int getSentenceMonths() {
+        return sentenceMonths;
+    }
+
+    public void setSentenceMonths(int sentenceMonths) {
+        if (sentenceMonths < 0) {
+            throw new IllegalArgumentException("Sentence cannot be negative: " + sentenceMonths);
+        }
+        this.sentenceMonths = sentenceMonths;
+    }
+
+    public double getFineAmount() {
+        return fineAmount;
+    }
+
+    public void setFineAmount(double fineAmount) {
+        if (fineAmount < 0) {
+            throw new IllegalArgumentException("Fine cannot be negative: " + fineAmount);
+        }
+        this.fineAmount = fineAmount;
+    }
+
+    public String getJudgeName() {
+        return judgeName;
+    }
+
+    public void setJudgeName(String judgeName) {
+        if (judgeName == null || judgeName.trim().isEmpty()) {
+            throw new IllegalArgumentException("Judge name must not be empty");
+        }
+        this.judgeName = judgeName.trim();
+    }
 }
