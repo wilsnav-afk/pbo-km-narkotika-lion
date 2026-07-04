@@ -13,9 +13,9 @@ Final project for the Object-Oriented Programming course, even semester
 
 | Name | NIM | Class | Role | Branch |
 |------|-----|-------|------|--------|
-| *(fill in)* | *(fill in)* | *(fill in)* | Knowledge/DB Engineer - Model layer | `feature/model` |
-| *(fill in)* | *(fill in)* | *(fill in)* | GUI Designer - View layer | `feature/view` |
-| *(fill in)* | *(fill in)* | *(fill in)* | Backend Developer - Controller layer | `feature/controller` |
+| Wilsons | 202510370110282 | International | Knowledge/DB Engineer - Model layer | `wilsnav-afk/knowledge` |
+| Saladin | 202510370110141 | International | GUI Designer - View layer | `feature/view` |
+| Reyhan | 202510370110213 | International | Backend Developer - Controller layer | `feature/controller` |
 
 **Demo video:** *(YouTube link goes here)*
 
