@@ -17,7 +17,7 @@ Final project for the Object-Oriented Programming course, even semester
 | Saladin | 202510370110141 | International | GUI Designer - View layer | `feature/view` |
 | Reyhan | 202510370110213 | International | Backend Developer - Controller layer | `feature/controller` |
 
-**Demo video:** *(YouTube link goes here)*
+**Demo video:** https://www.youtube.com/watch?v=9SLOAQ4woG4
 
 ## Features
 
