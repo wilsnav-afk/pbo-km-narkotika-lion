@@ -1,0 +1,36 @@
+name: Java CI
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # the GUI sources need the JavaFX SDK; it is gitignored, so fetch it here
+      - name: Download JavaFX SDK
+        run: |
+          curl -sL -o /tmp/openjfx.zip https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_linux-x64_bin-sdk.zip
+          unzip -q /tmp/openjfx.zip -d lib
+          mv lib/javafx-sdk-* lib/javafx-sdk
+
+      - name: Compile
+        run: |
+          mkdir -p out
+          javac --module-path lib/javafx-sdk/lib --add-modules javafx.controls -d out $(find src -name "*.java")
+
+      # boot the console app, let it load the dataset, exit through the menu
+      # (the GUI itself cannot open on a headless runner)
+      - name: Smoke test
+        run: echo "0" | java -cp out app.Main
